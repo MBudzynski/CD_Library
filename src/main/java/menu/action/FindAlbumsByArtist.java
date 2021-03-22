@@ -1,13 +1,12 @@
 package menu.action;
 
-
 import lombok.RequiredArgsConstructor;
 import menu.CustomScanner;
 import menu.MenuActionContext;
 import repository.AlbumsRepository;
 
 @RequiredArgsConstructor
-public class FindAlbumsByTitleAndArtist implements MenuAction {
+public class FindAlbumsByArtist implements MenuAction {
 
     private final MenuActionContext ctx;
     private final CustomScanner scanner;
@@ -18,15 +17,13 @@ public class FindAlbumsByTitleAndArtist implements MenuAction {
 
         System.out.println("0) Przejdź do poprzedniego menu");
 
-        System.out.println("Podaj tytuł lub autora szukanego albumu");
+        System.out.println("Podaj autora szukanego albumu");
 
         var input = scanner.nextLine();
 
         if (pressedZero(input)) return;
 
         var albums = albumRepository.findByAuthor(input);
-
-        albums.addAll(albumRepository.findByAlbumName(input));
 
         if (albums.isEmpty()) {
             System.out.println("Brak danych do wyświetlenia");

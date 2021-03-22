@@ -34,6 +34,6 @@ public class Song {
 
   @Override
   public String toString() {
-    return  id + ") " +  " title: " + title +  ", author: " + author +  ", album name: " + album;
+    return  id + ") " +  " title: " + title +  ", author: " + author +  ", album: " + album.getAlbumName();
   }
 }

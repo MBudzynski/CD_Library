@@ -47,7 +47,7 @@ public class AddSongToAlbum implements MenuAction {
     albumsRepository
         .findById(albumId)
         .ifPresentOrElse(
-            album -> builder.album(album),
+                builder::album,
             () -> {
               System.out.println("Podany id albumu nie istnieje");
               addAlbum(builder);

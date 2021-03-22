@@ -4,7 +4,6 @@ package menu.action;
 import lombok.RequiredArgsConstructor;
 import menu.MenuActionContext;
 import repository.AlbumsRepository;
-import service.AlbumService;
 
 @RequiredArgsConstructor
 public class ViewAlbumAction implements MenuAction {

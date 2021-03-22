@@ -7,7 +7,7 @@ import menu.MenuActionContext;
 import repository.SongsRepository;
 
 @RequiredArgsConstructor
-public class FindSongsByTitleAndArtist implements MenuAction {
+public class FindSongsByTitle implements MenuAction {
 
     private final MenuActionContext ctx;
     private final CustomScanner scanner;
@@ -18,15 +18,13 @@ public class FindSongsByTitleAndArtist implements MenuAction {
 
         System.out.println("0) Przejdź do poprzedniego menu");
 
-        System.out.println("Podaj tytuł lub autora szukanej piosenki");
+        System.out.println("Podaj tytuł szukanej piosenki");
 
         var input = scanner.nextLine();
 
         if (pressedZero(input)) return;
 
-        var songs = songRepository.findByAuthor(input);
-
-        songs.addAll(songRepository.findByTitle(input));
+        var songs = songRepository.findByTitle(input);
 
         if (songs.isEmpty()) {
             System.out.println("Brak danych do wyświetlenia");

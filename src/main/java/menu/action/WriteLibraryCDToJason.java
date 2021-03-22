@@ -41,13 +41,5 @@ public class WriteLibraryCDToJason implements MenuAction  {
 
 
 }
-
-    private boolean pressedZero(String input) {
-        if (input.equals("0")) {
-            ctx.use(MainAction.class).execute();
-            return true;
-        }
-        return false;
-    }
 }
 

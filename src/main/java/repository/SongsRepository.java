@@ -22,7 +22,7 @@ public class SongsRepository extends AbstractRepository<Song, Integer> {
     var criteriaBuilder = em.getCriteriaBuilder();
     var criteriaQuery = criteriaBuilder.createQuery(Song.class);
     var root = criteriaQuery.from(Song.class);
-    var predicate = criteriaBuilder.equal(root.get("author"), author);
+    var predicate = criteriaBuilder.like(root.get("author"), "%" + author + "%");
     return em.createQuery(criteriaQuery.select(root).where(predicate)).getResultList();
   }
 
@@ -31,7 +31,7 @@ public class SongsRepository extends AbstractRepository<Song, Integer> {
     var criteriaBuilder = em.getCriteriaBuilder();
     var criteriaQuery = criteriaBuilder.createQuery(Song.class);
     var root = criteriaQuery.from(Song.class);
-    var predicate = criteriaBuilder.like(root.get("title"), title);
+    var predicate = criteriaBuilder.like(root.get("title"), "%" + title + "%");
     return em.createQuery(criteriaQuery.select(root).where(predicate)).getResultList();
   }
 
@@ -44,8 +44,7 @@ public class SongsRepository extends AbstractRepository<Song, Integer> {
   }
 
   public void addSongFromList (List<Song> listSongs){
-
-    Song song= new Song();
+    Song song;
     for (int i = 0; i <listSongs.size() ; i++) {
       em.getTransaction().begin();
       song = listSongs.get(i);

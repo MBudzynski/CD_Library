@@ -6,8 +6,6 @@ import menu.action.*;
 import repository.AlbumsRepository;
 import repository.CrudRepositoryFactory;
 import repository.SongsRepository;
-import service.AlbumService;
-import service.CrudeServiceFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -55,11 +53,17 @@ public class MenuActionContext {
             repositoryFactory.get(SongsRepository.class),
             repositoryFactory.get(AlbumsRepository.class)));
     holder.put(
-            FindAlbumsByTitleAndArtist.class,
-            new FindAlbumsByTitleAndArtist(this, scanner, repositoryFactory.get(AlbumsRepository.class)));
+            FindAlbumsByTitle.class,
+            new FindAlbumsByTitle(this, scanner, repositoryFactory.get(AlbumsRepository.class)));
     holder.put(
-            FindSongsByTitleAndArtist.class,
-            new FindSongsByTitleAndArtist(this, scanner, repositoryFactory.get(SongsRepository.class)));
+            FindAlbumsByArtist.class,
+            new FindAlbumsByArtist(this, scanner, repositoryFactory.get(AlbumsRepository.class)));
+    holder.put(
+            FindSongsByTitle.class,
+            new FindSongsByTitle(this, scanner, repositoryFactory.get(SongsRepository.class)));
+    holder.put(
+            FindSongsByArtist.class,
+            new FindSongsByArtist(this, scanner, repositoryFactory.get(SongsRepository.class)));
     holder.put(
             WriteLibraryCDToJason.class,
             new WriteLibraryCDToJason(this, repositoryFactory.get(AlbumsRepository.class), repositoryFactory.get(SongsRepository.class)));
