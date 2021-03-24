@@ -14,7 +14,7 @@ public class AlbumsRepository extends AbstractRepository<Album, Integer> {
     super(em, Album.class);
   }
 
-  public void addAlbummFromList (List<Album> listAlbums){
+  public void addAlbumFromList(List<Album> listAlbums){
     Album album;
     for (int i = 0; i <listAlbums.size() ; i++) {
       em.getTransaction().begin();
@@ -34,7 +34,7 @@ public class AlbumsRepository extends AbstractRepository<Album, Integer> {
     return em.createQuery(criteriaQuery.select(root).where(predicate)).getResultList();
   }
 
-  public List<Album> findByAlbumName(String albumName) {
+  public List<Album> findAlbumByName(String albumName) {
 
     var criteriaBuilder = em.getCriteriaBuilder();
     var criteriaQuery = criteriaBuilder.createQuery(Album.class);

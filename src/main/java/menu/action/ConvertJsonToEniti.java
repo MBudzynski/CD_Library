@@ -38,7 +38,7 @@ public class ConvertJsonToEniti implements MenuAction {
 
         songsRepository.addSongFromList(listSongs);
 
-        albumsRepository.addAlbummFromList(listAlbums);
+        albumsRepository.addAlbumFromList(listAlbums);
 
        ctx.use(MainAction.class).execute();
 

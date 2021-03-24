@@ -35,7 +35,6 @@ public abstract class AbstractService<ENTITY, DTO, Integer> implements CrudServi
     public DTO update(DTO dto) {
         return mapper.toDto(repository.update(mapper.toEntity(dto)));
     }
-
     @Override
     public void delete(Integer id) {
         repository.delete(id);

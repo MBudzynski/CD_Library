@@ -24,7 +24,7 @@ public class FindAlbumsByTitle implements MenuAction {
 
         if (pressedZero(input)) return;
 
-        var albums = albumRepository.findByAlbumName(input);
+        var albums = albumRepository.findAlbumByName(input);
 
 
         if (albums.isEmpty()) {
