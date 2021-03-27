@@ -5,13 +5,13 @@ import entity.Album;
 import lombok.RequiredArgsConstructor;
 import menu.CustomScanner;
 import menu.MenuActionContext;
-import repository.AlbumsRepository;
+import service.AlbumService;
 
 @RequiredArgsConstructor
 public class CreateAlbumAction implements MenuAction {
   private final CustomScanner scanner;
   private final MenuActionContext ctx;
-  private final AlbumsRepository repository;
+  private final AlbumService albumService;
 
   @Override
   public void execute() {
@@ -33,7 +33,7 @@ public class CreateAlbumAction implements MenuAction {
 
     var album = builder.author(input).build();
 
-    repository.create(album);
+    albumService.createAlbum(album);
     ctx.use(MainAction.class).execute();
   }
 

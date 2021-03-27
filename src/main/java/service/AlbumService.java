@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
-public class AlbumService  {
+public class AlbumService {
 
     private AlbumsRepository repository;
     private AlbumMapper mapper;

@@ -8,14 +8,16 @@ import menu.CustomScanner;
 import menu.MenuActionContext;
 import repository.AlbumsRepository;
 import repository.SongsRepository;
+import service.AlbumService;
+import service.SongService;
 
 @RequiredArgsConstructor
 public class AddSongToAlbum implements MenuAction {
 
   private final CustomScanner scanner;
   private final MenuActionContext ctx;
-  private final SongsRepository songsRepository;
-  private final AlbumsRepository albumsRepository;
+  private final SongService songService;
+  private final AlbumService albumService;
 
   @Override
   public void execute() {
@@ -34,7 +36,7 @@ public class AddSongToAlbum implements MenuAction {
 
     addAlbum(builder);
     Song song = builder.build();
-    songsRepository.create(song);
+    songService.createSong(song);
 
     ctx.use(MainAction.class).execute();
   }
@@ -44,10 +46,10 @@ public class AddSongToAlbum implements MenuAction {
     String string = (scanner.nextLine());
     int albumId = Integer.parseInt(string);
     if (pressedZero(string)) return;
-    albumsRepository
-        .findById(albumId)
+    albumService
+        .findAlbumById(albumId)
         .ifPresentOrElse(
-                builder::album,
+                album  -> builder.album(album.toEntity()),
             () -> {
               System.out.println("Podany id albumu nie istnieje");
               addAlbum(builder);

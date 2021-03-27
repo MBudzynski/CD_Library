@@ -4,13 +4,14 @@ import lombok.RequiredArgsConstructor;
 import menu.CustomScanner;
 import menu.MenuActionContext;
 import repository.SongsRepository;
+import service.SongService;
 
 @RequiredArgsConstructor
 public class FindSongsByArtist implements MenuAction {
 
     private final MenuActionContext ctx;
     private final CustomScanner scanner;
-    private final SongsRepository songRepository;
+    private final SongService songService;
 
     @Override
     public void execute() {
@@ -23,7 +24,7 @@ public class FindSongsByArtist implements MenuAction {
 
         if (pressedZero(input)) return;
 
-        var songs = songRepository.findByAuthor(input);
+        var songs = songService.findSongsByArtist(input);
 
 
         if (songs.isEmpty()) {

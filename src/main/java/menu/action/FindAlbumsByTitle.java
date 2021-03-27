@@ -4,14 +4,14 @@ package menu.action;
 import lombok.RequiredArgsConstructor;
 import menu.CustomScanner;
 import menu.MenuActionContext;
-import repository.AlbumsRepository;
+import service.AlbumService;
 
 @RequiredArgsConstructor
 public class FindAlbumsByTitle implements MenuAction {
 
     private final MenuActionContext ctx;
     private final CustomScanner scanner;
-    private final AlbumsRepository albumRepository;
+    private final AlbumService albumService;
 
     @Override
     public void execute() {
@@ -24,7 +24,7 @@ public class FindAlbumsByTitle implements MenuAction {
 
         if (pressedZero(input)) return;
 
-        var albums = albumRepository.findAlbumByName(input);
+        var albums = albumService.findAlbumsByName(input);
 
 
         if (albums.isEmpty()) {

@@ -1,13 +1,13 @@
 package menu.action;
 
 
-import entity.Album;
-import entity.Song;
+import dto.AlbumDto;
+import dto.SongDto;
 import lombok.RequiredArgsConstructor;
 import menu.MenuActionContext;
 import org.codehaus.jackson.map.ObjectMapper;
-import repository.AlbumsRepository;
-import repository.SongsRepository;
+import service.AlbumService;
+import service.SongService;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,8 +17,8 @@ import java.util.List;
 public class WriteLibraryCDToJason implements MenuAction  {
 
     private final MenuActionContext ctx;
-    private final AlbumsRepository albumRepository;
-    private final SongsRepository songsRepository;
+    private final AlbumService albumService;
+    private final SongService songService;
 
     @Override
     public void execute() {
@@ -27,8 +27,8 @@ public class WriteLibraryCDToJason implements MenuAction  {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        List<Album> listAlbums = albumRepository.getAll();
-        List<Song> listSongs = songsRepository.getAll();
+        List<AlbumDto> listAlbums = albumService.getAlbums();
+        List<SongDto> listSongs = songService.getAllSong();
 
         try {
             mapper.writeValue(new File("zapisaneAlbumu.json"), listAlbums);

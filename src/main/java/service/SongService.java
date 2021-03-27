@@ -42,4 +42,8 @@ public class SongService {
         repository.delete(id);
     }
 
+    public List<SongDto> getAllSong(){
+        return repository.getAll().stream().map(song -> mapper.toDto(song)).collect(Collectors.toList());
+    }
+
 }

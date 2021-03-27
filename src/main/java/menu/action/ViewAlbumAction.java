@@ -3,20 +3,20 @@ package menu.action;
 
 import lombok.RequiredArgsConstructor;
 import menu.MenuActionContext;
-import repository.AlbumsRepository;
+import service.AlbumService;
 
 @RequiredArgsConstructor
 public class ViewAlbumAction implements MenuAction {
 
     private final MenuActionContext ctx;
-    private final AlbumsRepository repository;
+    private final AlbumService albumService;
 
 
     @Override
 
     public void execute() {
 
-        var albums = repository.getAll();
+        var albums = albumService.getAlbums();
 
         if (albums.isEmpty()) {
             System.out.println("Brak danych do wyświetlenia");

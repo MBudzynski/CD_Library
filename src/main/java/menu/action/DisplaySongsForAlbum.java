@@ -4,13 +4,13 @@ package menu.action;
 import lombok.RequiredArgsConstructor;
 import menu.CustomScanner;
 import menu.MenuActionContext;
-import repository.SongsRepository;
+import service.SongService;
 
 @RequiredArgsConstructor
 public class DisplaySongsForAlbum implements MenuAction {
   private final MenuActionContext ctx;
   private final CustomScanner scanner;
-  private final SongsRepository songsRepository;
+  private final SongService songService;
 
   @Override
   public void execute() {
@@ -23,7 +23,7 @@ public class DisplaySongsForAlbum implements MenuAction {
 
     if (pressedZero(input)) return;
 
-    var songs = songsRepository.findByAlbumId(Integer.valueOf(input));
+    var songs = songService.findByAlbumId(Integer.valueOf(input));
 
     if (songs.isEmpty()) {
       System.out.println("Brak danych do wyświetlenia");
