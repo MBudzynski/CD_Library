@@ -34,4 +34,8 @@ public class SongDto {
         return SongDto.builder().id(entity.getId()).title(entity.getTitle()).author(entity.getAuthor()).album(entity.getAlbum()).build();
     }
 
+    @Override
+    public String toString() {
+        return id + ")" + " title= " + title + ", " + "author=" + author + ", album: " + album.getAlbumName();
+    }
 }

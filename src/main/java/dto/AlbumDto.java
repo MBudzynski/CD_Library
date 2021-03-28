@@ -30,4 +30,9 @@ public class AlbumDto {
     public static AlbumDto from(Album entity){
         return AlbumDto.builder().id(entity.getId()).albumName(entity.getAlbumName()).author(entity.getAuthor()).build();
     }
+
+    @Override
+    public String toString() {
+        return id + ") " + "name= " + albumName + ", author= " + author;
+    }
 }

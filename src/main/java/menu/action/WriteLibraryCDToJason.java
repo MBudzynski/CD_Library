@@ -31,8 +31,8 @@ public class WriteLibraryCDToJason implements MenuAction  {
         List<SongDto> listSongs = songService.getAllSong();
 
         try {
-            mapper.writeValue(new File("zapisaneAlbumu.json"), listAlbums);
-            mapper.writeValue(new File("zapisanePiosenki.json"), listSongs);
+            mapper.writeValue(new File("savedAlbums.json"), listAlbums);
+            mapper.writeValue(new File("savedSongs.json"), listSongs);
         } catch (IOException e) {
             e.printStackTrace();
         }

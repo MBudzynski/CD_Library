@@ -30,8 +30,4 @@ public class Album {
     this.author = author;
   }
 
-  @Override
-  public String toString() {
-    return id + ") " + "album name: " + albumName + ", author: " + author ;
-  }
 }

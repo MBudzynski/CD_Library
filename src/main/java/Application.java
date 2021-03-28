@@ -12,6 +12,7 @@ public class Application {
         var emFactory =
                 JpaUtil.getEntityManagerFactory(
                         Configuration.getDataSource(), Configuration.getEntityClass());
+
         var repositoryFactory = new CrudRepositoryFactory(emFactory);
         var scanner = new CustomScanner();
 
