@@ -17,6 +17,10 @@ public class SongService {
         this.repository = repository;
     }
 
+    public List<SongDto> getAllSong(){
+        return repository.getAll().stream().map(song -> mapper.toDto(song)).collect(Collectors.toList());
+    }
+
     public List<SongDto> findSongsByArtist(String author){
         return repository.findByAuthor(author).stream().map(song -> mapper.toDto(song)).collect(Collectors.toList());
     }
@@ -32,10 +36,6 @@ public class SongService {
 
     public List<SongDto> findByAlbumId(Integer id){
        return repository.findByAlbumId(id).stream().map(song -> mapper.toDto(song)).collect(Collectors.toList());
-    }
-
-    public List<SongDto> getAllSong(){
-        return repository.getAll().stream().map(song -> mapper.toDto(song)).collect(Collectors.toList());
     }
 
     public void addSongsFromList(List<Song> listSongs){

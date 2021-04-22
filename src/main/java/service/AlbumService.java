@@ -25,7 +25,8 @@ public class AlbumService {
     }
 
     public List<AlbumDto> getAlbums() {
-        return repository.getAll().stream().map(album -> mapper.toDto(album)).collect(Collectors.toList());
+        List<Album> albums = repository.getAll();
+        return albums.stream().map(album -> mapper.toDto(album)).collect(Collectors.toList());
     }
 
     public Optional<AlbumDto> findAlbumById(Integer id) {
